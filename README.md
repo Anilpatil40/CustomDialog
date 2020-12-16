@@ -22,7 +22,7 @@ Installation :
 		}
 	}
 
-Step 2 :
+<b>Step</b>  2 :
 
 Add the dependency
 
