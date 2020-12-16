@@ -31,6 +31,8 @@ public class CustomDialog extends Dialog {
     public static final int FAILURE = 2;
     public static final int INFORMATION = 3;
     public static final int QUESTION = 4;
+    private View.OnClickListener positiveListener;
+    private View.OnClickListener negativeListener;
 
 
     public CustomDialog(Context context) {
@@ -88,6 +90,22 @@ public class CustomDialog extends Dialog {
         negative_button = view.findViewById(R.id.cancel_button);
         cardView = rootView.findViewById(R.id.cardView);
         mainView = rootView.findViewById(R.id.toAddView);
+        negative_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                if (positiveListener != null)
+                    positiveListener.onClick(v);
+            }
+        });
+        negative_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                if (negativeListener != null)
+                    negativeListener.onClick(v);
+            }
+        });
     }
 
     @Override
@@ -127,27 +145,12 @@ public class CustomDialog extends Dialog {
 
     public void setPositiveButton(String text, View.OnClickListener listener){
         positive_button.setText(text);
-        positive_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                if (listener != null)
-                    listener.onClick(v);
-
-            }
-        });
+        positiveListener = listener;
     }
 
     public void setNegativeButton(String text, View.OnClickListener listener){
         negative_button.setText(text);
-        negative_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                if (listener != null)
-                    listener.onClick(v);
-            }
-        });
+        negativeListener = listener;
     }
 }
 
