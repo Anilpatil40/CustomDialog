@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="100dp"
-        app:cardBackgroundColor="@android:color/holo_green_dark">
+        app:cardBackgroundColor="@color/info_color">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,13 +24,12 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/checked_circle"/>
+                android:src="@drawable/info_icon"/>
 
             <TextView
                 android:id="@+id/title_ext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SUCCESS"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
@@ -39,7 +38,7 @@
                 android:id="@+id/description_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:paddingHorizontal="20dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="15sp"/>
@@ -55,41 +54,53 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:minHeight="100dp">
+                    android:orientation="vertical">
 
-                    <com.github.nikartm.button.FitButton
-                        android:id="@+id/cancel_button"
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1"
-                        app:fb_text="Cancel"
-                        app:fb_textColor="@android:color/holo_red_dark"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/toAddView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:gravity="center"
-                        app:fb_borderWidth="1dp"
-                        app:fb_borderColor="@android:color/holo_red_dark"
-                        app:fb_textSize="15sp"
-                        app:fb_rippleColor="@android:color/holo_red_dark"
-                        />
+                        android:layout_marginBottom="20dp"
+                        android:minHeight="50dp">
 
-                    <com.github.nikartm.button.FitButton
-                        android:id="@+id/ok_button"
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:layout_margin="10dp"
-                        app:fb_text="Ok"
-                        app:fb_textColor="@android:color/holo_green_dark"
-                        android:gravity="center"
-                        app:fb_borderWidth="1dp"
-                        app:fb_borderColor="@android:color/holo_green_dark"
-                        app:fb_textSize="15sp"
-                        app:fb_rippleColor="@android:color/holo_green_dark"
-                        />
+                        <com.github.nikartm.button.FitButton
+                            android:id="@+id/cancel_button"
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_weight="1"
+                            app:fb_text="Cancel"
+                            app:fb_textColor="@color/red"
+                            android:gravity="center"
+                            app:fb_borderWidth="1dp"
+                            app:fb_borderColor="@color/red"
+                            app:fb_textSize="15sp"
+                            app:fb_rippleColor="@color/red"
+                            />
 
+                        <com.github.nikartm.button.FitButton
+                            android:id="@+id/ok_button"
+                            android:layout_width="100dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:layout_marginHorizontal="10dp"
+                            app:fb_text="Ok"
+                            app:fb_textColor="@color/green"
+                            android:gravity="center"
+                            app:fb_borderWidth="1dp"
+                            app:fb_borderColor="@color/green"
+                            app:fb_textSize="15sp"
+                            app:fb_rippleColor="@color/green"
+                            />
 
+                    </LinearLayout>
 
                 </LinearLayout>
 

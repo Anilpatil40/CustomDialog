@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#fff</color>
+    <color name="red">#BF0202</color>
+    <color name="green">#027307</color>
+    <color name="info_color">#274243</color>
+    <color name="question_color">#8F3D07</color>
 </resources>

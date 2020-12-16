@@ -4,17 +4,20 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
 import com.github.nikartm.button.FitButton;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CustomDialog extends Dialog {
     private TextView title,description;
@@ -22,8 +25,12 @@ public class CustomDialog extends Dialog {
     private FitButton positive_button,negative_button;
     private Context mContext;
     private View rootView;
+    private CardView mainView;
+    private CardView cardView;
     public static final int SUCCESS = 1;
     public static final int FAILURE = 2;
+    public static final int INFORMATION = 3;
+    public static final int QUESTION = 4;
 
 
     public CustomDialog(Context context) {
@@ -31,7 +38,7 @@ public class CustomDialog extends Dialog {
         mContext = context;
         rootView = LayoutInflater.from(context).inflate(R.layout.alert,null);
         initAllViews(rootView);
-        this.setContentView(rootView);
+        super.setContentView(rootView);
         this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
@@ -40,21 +47,38 @@ public class CustomDialog extends Dialog {
         mContext = context;
         rootView = LayoutInflater.from(context).inflate(R.layout.alert,null);
         initAllViews(rootView);
-        this.setContentView(rootView);
+        super.setContentView(rootView);
         this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         switch (type){
             case SUCCESS:
-
+                cardView.setBackgroundColor(mContext.getResources().getColor(R.color.green));
+                imageView.setImageResource(R.drawable.checked_circle);
                 break;
             case FAILURE:
-                CardView cardView = rootView.findViewById(R.id.cardView);
-                cardView.setBackgroundColor(mContext.getResources().getColor(android.R.color.holo_red_dark));
+                cardView.setBackgroundColor(mContext.getResources().getColor(R.color.red));
                 imageView.setImageResource(R.drawable.cancel);
                 break;
+            case QUESTION:
+                cardView.setBackgroundColor(mContext.getResources().getColor(R.color.question_color));
+                imageView.setImageResource(R.drawable.question_circle);
+                break;
+            case INFORMATION:
+                cardView.setBackgroundColor(mContext.getResources().getColor(R.color.info_color));
+                imageView.setImageResource(R.drawable.info_icon);
+                break;
+
         }
     }
 
-
+    @Override
+    public void dismiss() {
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                CustomDialog.super.dismiss();
+            }
+        }, 300);
+    }
 
     private void initAllViews(View view){
         title = view.findViewById(R.id.title_ext);
@@ -62,6 +86,26 @@ public class CustomDialog extends Dialog {
         imageView = view.findViewById(R.id.image_view);
         positive_button = view.findViewById(R.id.ok_button);
         negative_button = view.findViewById(R.id.cancel_button);
+        cardView = rootView.findViewById(R.id.cardView);
+        mainView = rootView.findViewById(R.id.toAddView);
+    }
+
+    @Override
+    public void setContentView(@NonNull View view) {
+        mainView.removeAllViews();
+        mainView.addView(view);
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        View view = LayoutInflater.from(mContext).inflate(layoutResID,null);
+        setContentView(view);
+    }
+
+    @Override
+    public void setContentView(@NonNull View view, @Nullable ViewGroup.LayoutParams params) {
+        view.setLayoutParams(params);
+        setContentView(view);
     }
 
     public void setTitle(CharSequence title) {
