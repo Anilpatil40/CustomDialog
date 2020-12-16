@@ -11,7 +11,7 @@ Screenshots :
 
 Installation :
 
-1 step :
+<b>Step</b> 2 :
 
   Add it in your root build.gradle at the end of repositories:
 
@@ -22,7 +22,7 @@ Installation :
 		}
 	}
 
-2 step :
+Step 2 :
 
 Add the dependency
 
