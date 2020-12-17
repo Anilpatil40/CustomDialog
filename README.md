@@ -1,7 +1,7 @@
 # CustomDialog
 
 
-This is CustomDialogue for beatiful view
+This is CustomDialogue for beatifull view
 
 Screenshots :
 
