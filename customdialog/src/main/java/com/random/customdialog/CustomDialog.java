@@ -90,7 +90,7 @@ public class CustomDialog extends Dialog {
         negative_button = view.findViewById(R.id.cancel_button);
         cardView = rootView.findViewById(R.id.cardView);
         mainView = rootView.findViewById(R.id.toAddView);
-        negative_button.setOnClickListener(new View.OnClickListener() {
+        positive_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
