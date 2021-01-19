@@ -1,7 +1,7 @@
 # CustomDialog
 
 ## ABOUT
-This is CustomDialogue for beatifull view
+This is CustomDialog for beatifull view
 
 ## SCREENSHOT
 
